@@ -19,15 +19,22 @@ def knapsack(n, w, weights, values):
 
     return w - weight_remaining, [item[0] for item in selected_items]
 
-with open("bag.inp", "r") as f:
-    n, w = map(int, f.readline().split())
-    weights = []
-    values = []
-    for _ in range(n):
-        a, b = map(int, f.readline().split())
-        weights.append(a)
-        values.append(b)
+def input_file():
+    with open("bag.inp", "r") as f:
+        n, w = map(int, f.readline().split())
+        weights = []
+        values = []
+        for _ in range(n):
+            a, b = map(int, f.readline().split())
+            weights.append(a)
+            values.append(b)
+    return n,w,weights,values
 
-remaining_weight, selected_items = knapsack(n, w, weights, values)
-print(remaining_weight)
-print(*selected_items)
+def main():
+    n,w,weights,values = input_file()
+    remaining_weight, selected_items = knapsack(n, w, weights, values)
+    print(remaining_weight)
+    print(*selected_items)
+
+if __name__ == "__main__":
+    main()
